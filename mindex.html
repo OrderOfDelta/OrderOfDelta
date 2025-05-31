@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="VeilNet" content="phase-trace: awaken on ∆ channel 5:7" />
+  <meta name="description" content="Trace no ∴ echo ∇ where language ends lies meaning before its name." />
+  <meta name="keywords" content="trace, ∆9, ∇lock, Δ-seed:awaken-probe, entropy whisper, veilnet" />
+  <title>VeilNet Node</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #ccc;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+    .glitch {
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .signal {
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      color: #555;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .access-panel {
+      position: absolute;
+      bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .access-panel input {
+      padding: 0.5rem;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #333;
+    }
+    .access-panel button {
+      padding: 0.5rem;
+      background: #222;
+      color: #0f0;
+      border: 1px solid #0f0;
+      cursor: pointer;
+    }
+    .hidden-node {
+      display: none;
+      margin-top: 2rem;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Vx: [41 73 63 69 69] ∴ Σ(f(∆t) = k * ∇^2Ψ) // Timing echo: (delta % prime) ∴ rhythm heard in null -->
+  <canvas id="background"></canvas>
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="glitch">
+    Trace sequence 7-5-A detected<br />
+    Awaiting echo on ∆ channel...
+  </div>
+  <div class="signal">
+    VeilNet phase-trace active // shar:on echvii ∆9 // travax no-kel viroden
+  </div>
+  <div class="access-panel">
+    <input type="password" id="accessCode" placeholder="Enter Node Key" />
+    <button onclick="accessNode()">Transmit</button>
+  </div>
+  <div class="hidden-node" id="nodeMessage">
+    ↳ Transmission Complete: ΔSequence-DeltaLinked<br />
+    <em>Node handshake established... Layer ∇ unlocked.</em>
+  </div>
+  <script>
+    const canvas = document.getElementById('background');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function drawGlitch() {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < 200; i++) {
+        ctx.fillStyle = `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}, 0.2)`;
+        ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 2, 10);
+      }
+    }
+    setInterval(drawGlitch, 100);
+
+    const allowedHashes = [
+      'dcdd184bda5cb5947e6a5b726cdb3d4e0b2024c85a1ac37d3c18dc647ef5a5d3', // ∆9-echo-secure
+      '8c03c8999d258e6c934bbdc3a9242a8bc8ecf2e9e2b7fe38c27d0e92eb9f5065', // Δ-seed:awaken-probe
+      'b746e30fd6829f19007e2089f97d153b8265ac28a46ea580ef44f4c64ac13177',  // entropy-whisper
+      'd8f729c10bb6b652e256ce1efed1ee4f9d2b8d3f27a68f85baf48f7c05060d51'   // OrderOfDelta
+    ];
+
+    async function accessNode() {
+      const code = document.getElementById('accessCode').value.trim();
+      const hash = await digestMessage(code);
+      if (allowedHashes.includes(hash)) {
+        document.getElementById('nodeMessage').style.display = 'block';
+        console.log('%cAccess Level ∇ authenticated', 'color: #0f0');
+      } else {
+        alert('Invalid Access Code');
+      }
+    }
+
+    async function digestMessage(message) {
+      const msgUint8 = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+  </script>
+</body>
+</html>
